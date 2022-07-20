@@ -1,11 +1,34 @@
-import "./styles.css";
+import { Component } from "react";
+import "../styles/styles.css";
 
-function App() {
-  return (
-    <div>
-      <h1>Hello from App</h1>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      todo: "",
+    };
+  }
+
+  render() {
+    return (
+      <div className="app">
+        <h1>Todo List</h1>
+
+        <form className="add-todo">
+          <input type="text" placeholder="Add Todo" />
+
+          <button>Add</button>
+        </form>
+
+        <form className="todo-item">
+          <input type="checkbox" />
+          <p>Todo item description</p>
+          <button>X</button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default App;

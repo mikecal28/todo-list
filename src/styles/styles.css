@@ -1,0 +1,56 @@
+#root {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  color: #00a2c4;
+}
+
+.app {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #454544;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #999;
+}
+
+.add-todo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.add-todo input,
+button {
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  margin-left: 5px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.add-todo ::placeholder {
+  padding: 4px;
+}
+
+.add-todo button {
+  background-color: #00a2c4;
+}
+
+.add-todo button:active {
+  background-color: green;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 80%;
+}
