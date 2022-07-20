@@ -21,11 +21,13 @@ class App extends Component {
           <button>Add</button>
         </form>
 
-        <form className="todo-item">
+        <div className="todo-item">
           <input type="checkbox" />
+
           <p>Todo item description</p>
+
           <button>X</button>
-        </form>
+        </div>
       </div>
     );
   }
