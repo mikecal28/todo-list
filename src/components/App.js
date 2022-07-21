@@ -42,11 +42,22 @@ export default class App extends Component {
     }));
   }
 
+  componentDidMount() {
+    fetch("https://rec-todo-api.herokuapp.com/todos")
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState((state, props) => ({
+          todos: data,
+        }));
+      })
+      .catch((err) => console.error("Get Todos Err: ", err));
+  }
+
   renderTodos() {
-    return this.state.todos.map((todo, idx) => {
+    return this.state.todos.map((todo) => {
       console.log(todo);
       return (
-        <TodoItem key={idx} todo={todo} handleDelete={this.handleDelete} />
+        <TodoItem key={todo.id} todo={todo} handleDelete={this.handleDelete} />
       );
     });
   }

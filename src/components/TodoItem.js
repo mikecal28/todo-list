@@ -12,16 +12,27 @@ export default class TodoItem extends Component {
   }
 
   handleClick() {
-    this.setState((state, props) => ({
-      done: !state.done,
-    }));
-  }
+    // this.setState((state, props) => ({
+    //   done: !state.done,
+    // }));
 
-  // componentDidMount() {
-  //   this.setState({
-  //     done: this.props.done,
-  //   });
-  // }
+    fetch(`https://rec-todo-api.herokuapp.com/todo/${this.props.todo.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        done: !this.state.done,
+      }),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState((state, props) => ({
+          done: data.done,
+        }));
+      })
+      .catch((err) => console.error("handlClick Error: ", err));
+  }
 
   render() {
     return (
@@ -34,7 +45,10 @@ export default class TodoItem extends Component {
 
         <p className={this.state.done ? "done" : ""}>{this.props.todo.title}</p>
 
-        <button onClick={() => this.props.handleDelete(this.props.todo.id)}>
+        <button
+          className="delete-btn"
+          onClick={() => this.props.handleDelete(this.props.todo.id)}
+        >
           X
         </button>
       </div>
